@@ -5,9 +5,13 @@ import {connect} from 'react-redux'
 class Pool extends Component {
     render(){
         // console.log(this.props)
+        const { authedUser, question } = this.props
+        console.log('props authedUser: ', authedUser);
+        console.log('props question: ', question);
+
         return (
             <div className='pool'>
-
+                {question.id}
             </div>
         )
     }
@@ -18,7 +22,7 @@ function mapStateToProps({authedUser, users, questions}, {id}){
 
     return{
         authedUser,
-        question
+        question: question
     }
 }
 

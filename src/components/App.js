@@ -13,7 +13,9 @@ class App extends Component {
     return (
       <div>
         {this.props.loading === true
-        ? null
+        ? <div>
+          NULL
+        </div>
         : <Home />}
       </div>
     )
@@ -22,32 +24,17 @@ class App extends Component {
 
 function mapStateToProps({authedUser, users, questions}){
   
+    console.log(authedUser);
+    // console.log(users[authedUser]);
   
-  // const questionIds = Object.keys(questions)
-  const user = users[authedUser]
-  console.log('app authedUser: ', authedUser)
-  console.log('app user: ', user)
-  var t = Object.keys(user.answers)
-  console.log('tfdsgsag: ', t)
-
 
   return {
-    loading: authedUser === null
+    loading: authedUser === null,
+    authedUser,
+    users,
+    questions
   }
 }
 
-function test({questionIds, authedUser}){
-
-  console.log('test: ', authedUser)
-  // console.log(Object.keys(authedUser.answers))
-  
-  // var filtered = questionIds.filter(
-  //     function(e) {
-  //       return this.indexOf(e) < 0;
-  //     },
-  //     authedUser.questions
-  // );
-  // console.log(filtered);
-}
 
 export default connect(mapStateToProps)(App)

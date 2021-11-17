@@ -36,7 +36,7 @@ class Home extends Component {
                 </Box>
                 <TabPanel value={this.state.tabValue} index={0}>
                   <h3> Unanswered Questions</h3>
-                  {this.props.questionIds.map((id) => (
+                  {this.props.unansweredQuestions.map((id) => (
                     <li key={id}>
                     <Pool id={id}/>
                     </li>
@@ -44,21 +44,14 @@ class Home extends Component {
                 
                 </TabPanel>
                 <TabPanel value={this.state.tabValue} index={1}>
-                Answered Questions
+                <h3> Answered Questions </h3>
+                {this.props.answeredQuestions.map((id) => (
+                    <li key={id}>
+                    <Pool id={id}/>
+                    </li>
+                ))}
                 </TabPanel>
                 </Box>
-
-
-
-                 <ul>
-                    {this.props.questionIds.map((id) => (
-                        <li
-                            key = {id}>
-                            <div>Question id: {id}</div>
-                        </li>
-                    ))}
-                </ul> 
-
 
             </div>
         )
@@ -71,31 +64,30 @@ function mapStateToProps({questions, authedUser, users}){
 
 
     const questionIds = Object.keys(questions)
-    const user = users[authedUser]
-    // console.log('user: ', user)
-    // console.log('authedUser: ', authedUser)
+
+    console.log('authedUser: ', authedUser)
+    console.log('user: ', users[authedUser])
+
+    var userAnswered = Object.keys(users[authedUser].answers);
+    console.log(userAnswered);
+
+    var userUnanswered = questionIds.filter(
+        function(e) {
+          return this.indexOf(e) < 0;
+        },
+        userAnswered
+    );
+    console.log(userUnanswered);
 
     // test(questionIds, authedUser)
 
     return {
         questionIds: questionIds,
-        // answeredQuestions: ,
+        answeredQuestions: userAnswered,
+        unansweredQuestions: userUnanswered
         // unasweredQuestions: ,
     }
 }
 
-function test({questionIds, authedUser}){
-
-    console.log(authedUser)
-    // console.log(Object.keys(authedUser.answers))
-    
-    // var filtered = questionIds.filter(
-    //     function(e) {
-    //       return this.indexOf(e) < 0;
-    //     },
-    //     authedUser.questions
-    // );
-    // console.log(filtered);
-}
 
 export default connect(mapStateToProps)(Home)
