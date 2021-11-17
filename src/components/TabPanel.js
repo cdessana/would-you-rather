@@ -15,6 +15,7 @@ class TabPanel extends Component {
     render(){
 
         const { children, value, index, ...other } = this.props;
+        // console.log(children)
 
         return (
             <div
@@ -26,7 +27,8 @@ class TabPanel extends Component {
             >
                 {value === index && (
                 <Box sx={{ p: 3 }}>
-                    <Typography>{children}</Typography>
+                    {/* <Typography>{children}</Typography> */}
+                    {children}
                 </Box>
                 )}
             </div>
