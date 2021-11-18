@@ -35,20 +35,14 @@ class Home extends Component {
                     </Tabs>
                 </Box>
                 <TabPanel value={this.state.tabValue} index={0}>
-                  <h3> Unanswered Questions</h3>
                   {this.props.unansweredQuestions.map((id) => (
-                    <li key={id}>
-                    <Pool id={id}/>
-                    </li>
+                    <Pool  key={id} id={id}/>
                 ))}
                 
                 </TabPanel>
                 <TabPanel value={this.state.tabValue} index={1}>
-                <h3> Answered Questions </h3>
                 {this.props.answeredQuestions.map((id) => (
-                    <li key={id}>
-                    <Pool id={id}/>
-                    </li>
+                    <Pool  key={id} id={id}/>
                 ))}
                 </TabPanel>
                 </Box>

@@ -1,0 +1,51 @@
+.poll-author {
+    border-color: #e3f2fd;
+    border-radius: 5px 5px 0px 0px;
+    border-style: solid;
+    border-width: 1px;
+    font-size: medium;
+    font-weight: bold;
+    margin: -11px -11px 5px -11px;
+    padding: 10px;
+  }
+
+  .box{
+    width: 100%;
+    background-color: '#cfe8fc';
+    height: 30vh;
+  }
+
+  .pool-box{
+    margin-left: 0%;
+    height: 100px; 
+    /* background: blue; */
+  }
+
+ .profile-box{
+    border-style: solid;
+    border-width: 0px 1px 0px 0px;
+    border-color: lightblue;
+    width: 30%;
+    height: 30%; 
+    float: left; 
+    /* background: green; */
+ }
+
+  .profile-picture {
+    width: 100px;
+    height:100px;
+    margin: 25px auto;
+    overflow: hidden;
+    border-radius:50%;
+    position: relative;
+
+    
+  }
+  
+  .profile-picture img {
+    border-radius: 50%;
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%)
+  }
