@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import {handleInitialData} from '../actions/shared'
 import Home from './Home'
+import NewPool from './NewPool'
 
 class App extends Component {
 
@@ -16,7 +17,7 @@ class App extends Component {
         ? <div>
           NULL
         </div>
-        : <Home />}
+        : <NewPool />}
       </div>
     )
   }
@@ -24,9 +25,7 @@ class App extends Component {
 
 function mapStateToProps({authedUser, users, questions}){
   
-    console.log(authedUser);
-    // console.log(users[authedUser]);
-  
+    console.log(authedUser);  
 
   return {
     loading: authedUser === null,
