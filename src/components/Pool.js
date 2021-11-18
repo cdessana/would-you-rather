@@ -14,16 +14,19 @@ class Pool extends Component {
 
         return (
             <Box className ='box' >
-                <div className='pool-author'>
+                
+                <div className='pool-top'>
                     {userQuestion.name} asks:
                 </div>
 
-                <div className='box'>
+                <div className='pool-bottom'>
+                    
                     <div className = 'profile-box'>
-                    <div  className='profile-picture' > 
-                        <img  src={userQuestion.avatarURL} alt="user-profile" />
+                        <div  className='profile-picture' > 
+                            <img  src={userQuestion.avatarURL} alt="user-profile" />
+                        </div>
                     </div>
-                    </div>
+
                     <div className='pool-box'> 
                         <h3>Would you rather</h3>
                         ...{question.optionOne.text}...
