@@ -1,4 +1,7 @@
 import React, {Component} from 'react'
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+import './NewPool.css';
 
 
 class NewPool extends Component {
@@ -10,6 +13,7 @@ class NewPool extends Component {
 
     handleChangeOne = (e) => {
         const optionOne = e.target.value
+        console.log(optionOne)
         this.setState(() => ({
             optionOne
         }))
@@ -36,30 +40,53 @@ class NewPool extends Component {
         const { optionOne, optionTwo } = this.state
 
         return (
-            <div>
-            <h3 className='center'>Compose new Pool</h3>
-            <form className='new-tweet' onSubmit={this.handleSubmit}>
-                <textarea
-                    placeholder="Option one"
-                    value={optionOne}
-                    onChange={this.handleChangeOne}
-                    className='textarea'
-                    maxLength={280}
-                />
-                <textarea
-                    placeholder="Option two"
-                    value={optionTwo}
+
+            
+            <div className="question-card">
+
+
+                <header className="question-card-title">
+                <h3>Create new question</h3>
+                </header>
+
+                <div className="question-card-content">
+
+                    
+                    <h4> Complete the question </h4>
+                    <h2> Would you rather...</h2>
+
+                  
+                        <TextField
+                        className='question-input'
+                        required
+                        id="option-one"
+                        label="Option one"
+                        value = {optionOne}
+                        onChange={this.handleChangeOne}
+                        />
+                  
+             
+
+                    <h3>Or </h3>
+
+             
+                    <TextField
+                    className='question-input'
+                    required
+                    id="option-two"
+                    label="Option two"
+                    value = {optionTwo}
                     onChange={this.handleChangeTwo}
-                    className='textarea'
-                    maxLength={280}
-                />
-              <button
-                className='btn'
-                type='submit'
-                disabled={optionTwo === '' || optionTwo === ''}>
-                  Submit
-              </button>
-            </form>
+                    />  
+                
+        
+                </div>
+
+                <footer className='question-card-footer'>
+                <Button className='inferno' variant="outlined" disabled={optionTwo === '' || optionTwo === ''}>Submit</Button>
+                </footer>
+            
+            
           </div>
         )
     }
