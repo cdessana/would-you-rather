@@ -1,4 +1,6 @@
 import React, {Component} from 'react'
+import {connect} from 'react-redux'
+import {handleAddQuestion} from '../actions/questions'
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import './NewPool.css';
@@ -30,7 +32,12 @@ class NewPool extends Component {
         e.preventDefault()
         const {optionOne, optionTwo} = this.state
         // todo: Add pool to the Store
+
+
         console.log('New pool: ', optionOne, optionTwo )
+
+        const {dispatch} = this.props
+        dispatch(handleAddQuestion(optionOne, optionTwo))
 
     }
 
@@ -83,7 +90,7 @@ class NewPool extends Component {
                 </div>
 
                 <footer className='question-card-footer'>
-                <Button className='inferno' variant="outlined" disabled={optionTwo === '' || optionTwo === ''}>Submit</Button>
+                <Button onClick={this.handleSubmit} className='inferno' variant="outlined" disabled={optionTwo === '' || optionTwo === ''}>Submit</Button>
                 </footer>
             
             
@@ -92,4 +99,4 @@ class NewPool extends Component {
     }
 }
 
-export default NewPool
+export default connect()(NewPool)
