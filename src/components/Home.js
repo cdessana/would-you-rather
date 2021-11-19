@@ -4,7 +4,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 import TabPanel from './TabPanel'
-import Pool from "./Pool";
+import PoolSneak from "./PoolSneak";
 
 class Home extends Component {
 
@@ -36,13 +36,13 @@ class Home extends Component {
                 </Box>
                 <TabPanel value={this.state.tabValue} index={0}>
                   {this.props.unansweredQuestions.map((id) => (
-                    <Pool  key={id} id={id}/>
+                    <PoolSneak  key={id} id={id}/>
                 ))}
                 
                 </TabPanel>
                 <TabPanel value={this.state.tabValue} index={1}>
                 {this.props.answeredQuestions.map((id) => (
-                    <Pool  key={id} id={id}/>
+                    <PoolSneak  key={id} id={id}/>
                 ))}
                 </TabPanel>
                 </Box>

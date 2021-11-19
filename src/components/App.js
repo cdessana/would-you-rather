@@ -17,7 +17,7 @@ class App extends Component {
         ? <div>
           NULL
         </div>
-        : <NewPool />}
+        : <Home />}
       </div>
     )
   }
