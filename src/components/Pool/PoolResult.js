@@ -1,11 +1,17 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import Box from '@mui/material/Box';
+import LinearProgress from '@mui/material/LinearProgress';
 
 class PollResult extends Component {
     render() {
     
     const {id, authedUser, question, userVote} = this.props
+    const totalVotes = question.optionOneVotes + question.optionTwoVotes
+    const optionOnePercentual = ((question.optionOneVotes / totalVotes)*100).toFixed(2)
+    const optionTwoPercentual = ((question.optionTwoVotes / totalVotes)*100).toFixed(2)
+
+    console.log(totalVotes, optionOnePercentual, optionTwoPercentual)
       
     return (
           <div>
@@ -27,10 +33,19 @@ class PollResult extends Component {
                           <h3>Results</h3>
                           <div className='pool-result'>
                             <h4>Would you rather {question.optionOneText}?</h4>
+                            <Box sx={{ width: '100%' }}>
+                                <LinearProgress variant="determinate" value={optionOnePercentual} />
+                            </Box>
+                            <p>{question.optionOneVotes} out of {totalVotes} votes</p>
                           </div>
 
                           <div className='pool-result'>
                             <h4>Would you rather {question.optionTwoText}?</h4>
+                            <Box sx={{ width: '100%' }}>
+                                <LinearProgress variant="determinate" value={optionTwoPercentual} />
+                            </Box>
+                            <p>{question.optionTwoVotes} out of {totalVotes} votes</p>
+                            
                           </div>
                       </div>
                   </div>
@@ -56,7 +71,9 @@ function mapStateToProps({ authedUser, users, questions }, props) {
     const questionAuthorAvatar = questionAuthor.avatarURL
 
     const optionOneVotes = question[optionOne].votes.length
+    console.log(optionOneVotes)
     const optionTwoVotes = question[optionTwo].votes.length
+    console.log(optionTwoVotes)
 
     const optionOneText = question[optionOne].text
     const optionTwoText = question[optionTwo].text
