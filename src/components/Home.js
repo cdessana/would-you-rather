@@ -57,15 +57,15 @@ class Home extends Component {
 function mapStateToProps({questions, authedUser, users}){
 
 
-    console.group('-------on home mapStateToProps-----')
+    // console.group('-------on home mapStateToProps-----')
 
     const questionIds = Object.keys(questions)
 
-    console.log('authedUser: ', authedUser)
+    // console.log('authedUser: ', authedUser)
     // console.log('user: ', users[authedUser])
 
     var userAnswered = Object.keys(users[authedUser].answers);
-    console.log('userAnswered :',  userAnswered);
+    // console.log('userAnswered :',  userAnswered);
 
     var userUnanswered = questionIds.filter(
         function(e) {

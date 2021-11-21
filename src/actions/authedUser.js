@@ -16,7 +16,6 @@ export function receiveAuthedUser(){
 
 export function handleSetAuthedUser(user) {
 
-  console.log('handleSetAuthedUser', user)
   return (dispatch) => {
     dispatch(setAuthedUser(user));
   };

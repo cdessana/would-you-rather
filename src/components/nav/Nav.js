@@ -7,11 +7,11 @@ import './Nav.css'
 function Nav (props) {
 
   const {user, dispatch} = props
-  console.log('NAV: ', props)
+  // console.log('NAV: ', props)
   // console.log(authedUser)
 
   const handleLogout = () => {
-    console.log('LOGOUT')
+    // console.log('LOGOUT')
     dispatch(handleSetAuthedUser(null))
   }
   

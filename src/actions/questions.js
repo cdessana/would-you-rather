@@ -27,7 +27,6 @@ function addQuestion (question) {
   export function handleAddAnswer(info){
     return (dispatch, getState) => {
       
-      // console.log('info: ', info)
       const {authedUser} = getState()
       dispatch(addAnswer({questionId: info.questionId, authedUser, answer: info.answer}))
       

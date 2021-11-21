@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
+import { Redirect } from 'react-router';
 import {handleAddAnswer} from '../../actions/questions'
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -11,9 +12,14 @@ import './Pool.css';
 
 
 class Pool extends Component{
+
+    constructor(props) {
+        super(props)
+     }
       
     state = {
         selected: 'optionOne',
+        voted: false
     }
        
     handleChange = (e) => {
@@ -31,13 +37,25 @@ class Pool extends Component{
 
         const {dispatch, id} = this.props
 
-        dispatch(handleAddAnswer({questionId: id, answer: selected}))       
+        dispatch(handleAddAnswer({questionId: id, answer: selected}))    
+        console.log('handleSubmit: ', this.props)
+
+        this.setState(() => ({
+            selected: '',
+            voted: true
+          }))
     }
     
     render(){
 
-        const {question} = this.props
-        const {selected} = this.state
+        const {question, id} = this.props
+        const {selected, voted} = this.state
+
+        
+        if (voted === true) {
+            return <Redirect to={`/pool/${id}`}/>;
+        }
+  
 
         return(
 
@@ -78,7 +96,7 @@ class Pool extends Component{
 
                     <div className='pool-submit'>
 
-                        <Button onClick={this.handleSubmit} variant='outlined'>Submit</Button>
+                        <Button onClick={this.handleSubmit} variant='outlined'  to={`/pool/${question.id}`}>Submit</Button>
                     </div>
                 </div>
             </div>

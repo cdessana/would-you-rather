@@ -29,8 +29,6 @@ class Login extends Component {
         e.preventDefault()
 
         const {authorizedUser} = this.state
-        console.log('onSUbimit :', authorizedUser)
-
         const {dispatch} = this.props
 
         dispatch(handleSetAuthedUser(authorizedUser))

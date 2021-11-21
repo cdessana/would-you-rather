@@ -11,7 +11,6 @@ class PollResult extends Component {
     const optionOnePercentual = ((question.optionOneVotes / totalVotes)*100).toFixed(2)
     const optionTwoPercentual = ((question.optionTwoVotes / totalVotes)*100).toFixed(2)
 
-    console.log(totalVotes, optionOnePercentual, optionTwoPercentual)
       
     return (
           <div>
@@ -65,15 +64,12 @@ function mapStateToProps({ authedUser, users, questions }, props) {
     // console.log('id: ', props.id)
 
     const question = questions[id]
-    console.log(question)
     const questionAuthor = users[question.author]
     const questionAuthorName = questionAuthor.name
     const questionAuthorAvatar = questionAuthor.avatarURL
 
     const optionOneVotes = question[optionOne].votes.length
-    console.log(optionOneVotes)
     const optionTwoVotes = question[optionTwo].votes.length
-    console.log(optionTwoVotes)
 
     const optionOneText = question[optionOne].text
     const optionTwoText = question[optionTwo].text

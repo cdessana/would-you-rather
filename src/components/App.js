@@ -17,21 +17,18 @@ class App extends Component {
   
   constructor(props) {
 
-    console.group('APP - PROPS')
+    // console.group('APP - PROPS')
     super(props);
 
-    console.log('props constructor: ', this.props)
+    // console.log('props constructor: ', this.props)
 
-    console.groupEnd()
+    // console.groupEnd()
 }
 
   getIsLoggedIn = () => {
 
-    console.log('on getIsLoggedIn')
     const {authedUser} = this.props.authedUser
-    console.log(authedUser)
     const loggedIn = authedUser!= null || undefined  ? true : false
-    console.log('on guard checking: ', loggedIn)
     return loggedIn
 
   }
@@ -42,16 +39,11 @@ class App extends Component {
 
   requireLogin = (to, from, next) => {
 
-    // let history = useHistory();
     if (to.meta.auth) {
       console.log('inside')
       if (this.props.isAuthorized) {
         next()
       }
-
-      //push history
-      console.log(to)
-      // history.push()
       
       next.redirect('/login');
     } else {
