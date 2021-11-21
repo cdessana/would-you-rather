@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import {connect} from 'react-redux'
-import {Route, Switch} from "react-router-dom";
+import {useHistory, Switch} from "react-router-dom";
 import {handleInitialData} from '../actions/shared'
 import { GuardProvider, GuardedRoute } from 'react-router-guards';
 import  LoadingBar  from 'react-redux-loading'
@@ -10,6 +10,7 @@ import PoolPage from './Pool/PoolPage'
 import NewPool from './Pool/NewPool'
 import Nav from './nav/Nav'
 import Leaderboard from './Leaderboard/Leaderboard';
+import PageNotFound from './PageNotFound';
 
 class App extends Component {
 
@@ -41,12 +42,17 @@ class App extends Component {
 
   requireLogin = (to, from, next) => {
 
+    // let history = useHistory();
     if (to.meta.auth) {
       console.log('inside')
       if (this.props.isAuthorized) {
-        console.log('authorized?')
         next()
       }
+
+      //push history
+      console.log(to)
+      // history.push()
+      
       next.redirect('/login');
     } else {
       next()
@@ -64,11 +70,13 @@ class App extends Component {
             ? <div>LOADING</div>
             : <div>
               <Nav />
-              <GuardProvider guards={[this.requireLogin]} loading={this.props.loading}>
+              <GuardProvider guards={[this.requireLogin]} loading={this.props.loading} error={PageNotFound}>
                 <Switch>  
                 <GuardedRoute path="/" exact component={Home}  meta={{ auth: true }}/>
                 <GuardedRoute path="/home" exact component={Home} meta={{ auth: true }} />
                   <GuardedRoute path="/login" component={Login}  />
+                  <GuardedRoute path="/page-not-found" component={PageNotFound}  />
+                  <GuardedRoute path="*" component={PageNotFound} />
                   <GuardedRoute path="/pool/:id" exact component={PoolPage} meta={{ auth: true }} />  
                   <GuardedRoute path='/new' exact component={NewPool} meta={{ auth: true }}  />
                   <GuardedRoute path="/leaderboard" exact component={Leaderboard}  meta={{ auth: true }} />
