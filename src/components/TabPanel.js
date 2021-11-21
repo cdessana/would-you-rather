@@ -15,7 +15,6 @@ class TabPanel extends Component {
     render(){
 
         const { children, value, index, ...other } = this.props;
-        // console.log(children)
 
         return (
             <div

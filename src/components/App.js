@@ -17,13 +17,8 @@ class App extends Component {
   
   constructor(props) {
 
-    // console.group('APP - PROPS')
     super(props);
-
-    // console.log('props constructor: ', this.props)
-
-    // console.groupEnd()
-}
+  }
 
   getIsLoggedIn = () => {
 
@@ -84,13 +79,6 @@ class App extends Component {
 
 function mapStateToProps({authedUser, users, questions}){
   
-
-  // console.log('mapStateToProps: ', authedUser)
-  // const isAuthorized = authedUser !== null ? true : false
-  // console.log(isAuthorized)
-
-  // console.log('users:', users)
-
   return {
     loading: Object.keys(users).length === 0 ? true : false,
     authedUser,

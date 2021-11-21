@@ -9,10 +9,7 @@ class PoolPage extends Component {
     render() {
 
         const {hasAnswered} = this.props
-
-        // console.log('props: ', this.props)
         const {id} = this.props
-        // console.log(id)
         
         return(
 

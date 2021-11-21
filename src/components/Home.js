@@ -56,34 +56,19 @@ class Home extends Component {
 
 function mapStateToProps({questions, authedUser, users}){
 
-
-    // console.group('-------on home mapStateToProps-----')
-
     const questionIds = Object.keys(questions)
-
-    // console.log('authedUser: ', authedUser)
-    // console.log('user: ', users[authedUser])
-
     var userAnswered = Object.keys(users[authedUser].answers);
-    // console.log('userAnswered :',  userAnswered);
-
     var userUnanswered = questionIds.filter(
         function(e) {
           return this.indexOf(e) < 0;
         },
         userAnswered
     );
-    // console.log(userUnanswered);
-
-    // test(questionIds, authedUser)
-
-    console.groupEnd()
 
     return {
         questionIds: questionIds,
         answeredQuestions: userAnswered,
         unansweredQuestions: userUnanswered
-        // unasweredQuestions: ,
     }
 }
 
