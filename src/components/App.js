@@ -64,7 +64,7 @@ class App extends Component {
       <Fragment>
         <LoadingBar />
         <div className='container'>
-          {this.props.loading !== true
+          {this.props.loading === true
             ? null
             : <div>
               
@@ -73,6 +73,7 @@ class App extends Component {
               <GuardProvider guards={[this.requireLogin]} loading={this.props.loading}>
                 <Switch>  
                 <GuardedRoute path="/" exact component={Home} />
+                <GuardedRoute path="/home" exact component={Home} />
                   <GuardedRoute path="/login" component={Login}  />
                   <GuardedRoute path="/pool/:id" exact component={PoolPage}  />  
                   <GuardedRoute path='/new' exact component={NewPool}  />
@@ -94,8 +95,10 @@ function mapStateToProps({authedUser, users, questions}){
   const isAuthorized = authedUser !== null ? true : false
   console.log(isAuthorized)
 
+  console.log('users:', users)
+
   return {
-    loading: authedUser === null,
+    loading: Object.keys(users).length === 0 ? true : false,
     authedUser,
     isAuthorized: isAuthorized,
     users,
