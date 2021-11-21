@@ -9,10 +9,6 @@ class PoolSneak extends Component {
   render() {
     
     const {authedUser, question, userQuestion} = this.props; 
-    // console.log(this.props)
-    // console.log('props authedUser: ', authedUser);
-    // console.log('props question: ', question);
-
     return (
     
       <Box className='box'>

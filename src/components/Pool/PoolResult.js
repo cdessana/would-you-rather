@@ -61,7 +61,6 @@ function mapStateToProps({ authedUser, users, questions }, props) {
 
     console.log('POOL RESULT - mapStateToProps')
     const id = props.id
-    // console.log('id: ', props.id)
 
     const question = questions[id]
     const questionAuthor = users[question.author]

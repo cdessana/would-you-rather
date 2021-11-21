@@ -29,8 +29,6 @@ class Leaderboard extends Component {
         return 0;
       });
 
-    // console.log(userPoints)
-
       return (
           <div>
               Leaderboard
