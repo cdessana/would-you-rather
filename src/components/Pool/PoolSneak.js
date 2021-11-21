@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import './PoolSneak.css';
@@ -28,10 +29,12 @@ class PoolSneak extends Component {
                 </div>
             </div>
 
-            <div className="pool-sneak-js-box"> 
+            <div className="pool-sneak-js-box">   
                 <h3>Would you rather</h3>
                 ...{question.optionOne.text}...
-                <Button variant='outlined'>View Poll</Button>
+                <Link className='poll-preview-link' to={`/pool/${question.id}`}>
+                  <Button variant='outlined'>View Poll</Button>
+                </Link>
             </div>
         </div>
     </Box>

@@ -15,7 +15,6 @@ class NewPool extends Component {
 
     handleChangeOne = (e) => {
         const optionOne = e.target.value
-        console.log(optionOne)
         this.setState(() => ({
             optionOne
         }))
@@ -33,7 +32,7 @@ class NewPool extends Component {
         e.preventDefault()
         const {optionOne, optionTwo} = this.state
 
-        console.log('New pool: ', optionOne, optionTwo )
+        // console.log('New pool: ', optionOne, optionTwo )
 
         const {dispatch} = this.props
         dispatch(handleAddQuestion(optionOne, optionTwo))

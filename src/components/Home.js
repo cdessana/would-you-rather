@@ -4,7 +4,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 import TabPanel from './TabPanel'
-import PoolSneak from "./PoolSneak";
+import PoolSneak from "./Pool/PoolSneak";
 
 class Home extends Component {
 
@@ -57,13 +57,15 @@ class Home extends Component {
 function mapStateToProps({questions, authedUser, users}){
 
 
+    console.group('-------on home mapStateToProps-----')
+
     const questionIds = Object.keys(questions)
 
     console.log('authedUser: ', authedUser)
     console.log('user: ', users[authedUser])
 
     var userAnswered = Object.keys(users[authedUser].answers);
-    console.log(userAnswered);
+    console.log('userAnswered :',  userAnswered);
 
     var userUnanswered = questionIds.filter(
         function(e) {
@@ -71,9 +73,11 @@ function mapStateToProps({questions, authedUser, users}){
         },
         userAnswered
     );
-    console.log(userUnanswered);
+    // console.log(userUnanswered);
 
     // test(questionIds, authedUser)
+
+    console.groupEnd()
 
     return {
         questionIds: questionIds,

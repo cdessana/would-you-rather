@@ -10,12 +10,12 @@ function Nav (props) {
   console.log('NAV: ', props)
   // console.log(authedUser)
   
-  return (
+  return user ? (
     
     <nav className='nav'>
       <ul>
         <li>
-          <NavLink to='/' exact activeClassName='active'>
+          <NavLink to='/home' exact activeClassName='active'>
             Home
           </NavLink>
         </li>
@@ -30,25 +30,23 @@ function Nav (props) {
           </NavLink>
         </li>
         <li>
-          Hello, {user.name} 
-          <img className ='nav-pic' src={user.avatarURL} alt="user-profile" />
-        </li>
-        <li>
-          {/* <NavLink onClick='this.logout' activeClassName='active'>
-            Logout
-          </NavLink> */}
-        </li>
+            Hello, {user.name} 
+            <img className ='nav-pic' src={user.avatarURL} alt="user-profile" />
+          </li>    
       </ul>
     </nav>
-  )
+  ) : null
 }
 
 function mapStateToProps({ authedUser, users },) {
 
-  const user = users[authedUser]
+  const user = authedUser? users[authedUser] : null
   return {
-    user,
-  };
+    user
+  }
 }
+
+// function mapStateToProps ({authedUser, users, tweets}, { id }) {
+
 
 export default connect(mapStateToProps)(Nav);

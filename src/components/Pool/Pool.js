@@ -31,14 +31,11 @@ class Pool extends Component{
 
         const {dispatch, id} = this.props
 
-        // console.log('qId', id)
         dispatch(handleAddAnswer({questionId: id, answer: selected}))       
     }
     
     render(){
 
-        // console.log(this.props)
-        // console.log('state: ', this.state)
         const {question} = this.props
         const {selected} = this.state
 
@@ -92,7 +89,6 @@ class Pool extends Component{
 function mapStateToProps({authedUser, users, questions}, {id}){
 
     const question = questions[id]
-    // console.log(question)
     const questionAuthor = users[question.author]
     const questionAuthorName = questionAuthor.name
     const questionAuthorAvatar = questionAuthor.avatarURL
