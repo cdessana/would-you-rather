@@ -76,7 +76,7 @@ class App extends Component {
                 <GuardedRoute path="/home" exact component={Home} meta={{ auth: true }} />
                   <GuardedRoute path="/login" component={Login}  />
                   <GuardedRoute path="/page-not-found" component={PageNotFound}  />
-                  <GuardedRoute path="*" component={PageNotFound} />
+                  {/* <GuardedRoute path="*" component={PageNotFound} /> */}
                   <GuardedRoute path="/pool/:id" exact component={PoolPage} meta={{ auth: true }} />  
                   <GuardedRoute path='/new' exact component={NewPool} meta={{ auth: true }}  />
                   <GuardedRoute path="/leaderboard" exact component={Leaderboard}  meta={{ auth: true }} />

@@ -62,7 +62,7 @@ function mapStateToProps({questions, authedUser, users}){
     const questionIds = Object.keys(questions)
 
     console.log('authedUser: ', authedUser)
-    console.log('user: ', users[authedUser])
+    // console.log('user: ', users[authedUser])
 
     var userAnswered = Object.keys(users[authedUser].answers);
     console.log('userAnswered :',  userAnswered);
