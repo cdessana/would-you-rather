@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {handleAddQuestion} from '../actions/questions'
+import {handleAddQuestion} from '../../actions/questions'
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import './NewPool.css';
@@ -29,10 +29,9 @@ class NewPool extends Component {
     }
 
     handleSubmit = (e) => {
+        
         e.preventDefault()
         const {optionOne, optionTwo} = this.state
-        // todo: Add pool to the Store
-
 
         console.log('New pool: ', optionOne, optionTwo )
 
@@ -48,20 +47,16 @@ class NewPool extends Component {
 
         return (
 
-            
             <div className="question-card">
-
 
                 <header className="question-card-title">
                 <h3>Create new question</h3>
                 </header>
 
                 <div className="question-card-content">
-
-                    
+                   
                     <h4> Complete the question </h4>
                     <h2> Would you rather...</h2>
-
                   
                         <TextField
                         className='question-input'
@@ -70,13 +65,10 @@ class NewPool extends Component {
                         label="Option one"
                         value = {optionOne}
                         onChange={this.handleChangeOne}
-                        />
-                  
-             
+                        />     
 
                     <h3>Or </h3>
-
-             
+           
                     <TextField
                     className='question-input'
                     required
@@ -86,13 +78,11 @@ class NewPool extends Component {
                     onChange={this.handleChangeTwo}
                     />  
                 
-        
                 </div>
 
                 <footer className='question-card-footer'>
                 <Button onClick={this.handleSubmit} className='inferno' variant="outlined" disabled={optionTwo === '' || optionTwo === ''}>Submit</Button>
                 </footer>
-            
             
           </div>
         )
