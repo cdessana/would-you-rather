@@ -1,10 +1,13 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import {connect} from 'react-redux'
+import {Route} from "react-router-dom";
 import {handleInitialData} from '../actions/shared'
 import  LoadingBar  from 'react-redux-loading'
 import Home from './Home'
 import PoolPage from './Pool/PoolPage'
 import NewPool from './Pool/NewPool'
+import Nav from './Nav'
+import Pool from './Pool/Pool'
 
 class App extends Component {
 
@@ -14,16 +17,20 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <LoadingBar/>
-        {this.props.loading === true
-        ? <div>
-          NULL
+      <Fragment>
+        <LoadingBar />
+        <div className='container'>
+          <Nav />
+          {this.props.loading === true
+            ? null
+            : <div>
+                <Route path='/' exact component={Home} />
+                <Route path='/pool/:id' component={PoolPage } />
+                <Route path='/new' component={NewPool} />
+              </div>}
         </div>
-        // // : <NewPool/>}
-        : <Home/>}
-        {/* // : <PoolPage match={{params: {id: 'am8ehyc8byjqgar0jgpub9'}}} />} */}
-      </div>
+      </Fragment>
+      
     )
   }
 }
