@@ -41,10 +41,6 @@ class App extends Component {
 
   requireLogin = (to, from, next) => {
 
-    // console.log(next)
-    // console.log(from)
-    // console.log(to)
-    
     if (to.meta.auth) {
       console.log('inside')
       if (this.props.isAuthorized) {
@@ -65,19 +61,17 @@ class App extends Component {
         <LoadingBar />
         <div className='container'>
           {this.props.loading === true
-            ? null
+            ? <div>LOADING</div>
             : <div>
-              
               <Nav />
-
               <GuardProvider guards={[this.requireLogin]} loading={this.props.loading}>
                 <Switch>  
-                <GuardedRoute path="/" exact component={Home} />
-                <GuardedRoute path="/home" exact component={Home} />
+                <GuardedRoute path="/" exact component={Home}  meta={{ auth: true }}/>
+                <GuardedRoute path="/home" exact component={Home} meta={{ auth: true }} />
                   <GuardedRoute path="/login" component={Login}  />
-                  <GuardedRoute path="/pool/:id" exact component={PoolPage}  />  
-                  <GuardedRoute path='/new' exact component={NewPool}  />
-                  <GuardedRoute path="/leaderboard" exact component={Leaderboard} />
+                  <GuardedRoute path="/pool/:id" exact component={PoolPage} meta={{ auth: true }} />  
+                  <GuardedRoute path='/new' exact component={NewPool} meta={{ auth: true }}  />
+                  <GuardedRoute path="/leaderboard" exact component={Leaderboard}  meta={{ auth: true }} />
                 </Switch>
               </GuardProvider>
               </div>}
@@ -91,16 +85,16 @@ class App extends Component {
 function mapStateToProps({authedUser, users, questions}){
   
 
-  console.log('mapStateToProps: ', authedUser)
-  const isAuthorized = authedUser !== null ? true : false
-  console.log(isAuthorized)
+  // console.log('mapStateToProps: ', authedUser)
+  // const isAuthorized = authedUser !== null ? true : false
+  // console.log(isAuthorized)
 
-  console.log('users:', users)
+  // console.log('users:', users)
 
   return {
     loading: Object.keys(users).length === 0 ? true : false,
     authedUser,
-    isAuthorized: isAuthorized,
+    isAuthorized: authedUser !== null ? true : false,
     users,
     questions
   }
