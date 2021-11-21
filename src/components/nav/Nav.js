@@ -1,14 +1,19 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import { NavLink } from 'react-router-dom'
+import { handleSetAuthedUser } from '../../actions/authedUser';
 import './Nav.css'
 
 function Nav (props) {
 
-
-  const {user} = props
+  const {user, dispatch} = props
   console.log('NAV: ', props)
   // console.log(authedUser)
+
+  const handleLogout = () => {
+    console.log('LOGOUT')
+    dispatch(handleSetAuthedUser(null))
+  }
   
   return user ? (
     
@@ -32,7 +37,10 @@ function Nav (props) {
         <li>
             Hello, {user.name} 
             <img className ='nav-pic' src={user.avatarURL} alt="user-profile" />
-          </li>    
+        </li>
+        <li>
+            <p onClick={handleLogout}>Logout</p> 
+        </li>   
       </ul>
     </nav>
   ) : null
@@ -45,8 +53,5 @@ function mapStateToProps({ authedUser, users },) {
     user
   }
 }
-
-// function mapStateToProps ({authedUser, users, tweets}, { id }) {
-
 
 export default connect(mapStateToProps)(Nav);
