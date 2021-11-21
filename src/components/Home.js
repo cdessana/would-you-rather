@@ -20,10 +20,12 @@ class Home extends Component {
             }))
         };
 
+        const hasQuestions = this.props.unansweredQuestions.lenght > 0
+
+
+
         return (
             <div>
-                <h3>The questions</h3>
-
                 <Box sx={{ width: '50%' }}>
                 <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                     <Tabs
@@ -34,13 +36,18 @@ class Home extends Component {
                     <Tab label="Answered Questions" />
                     </Tabs>
                 </Box>
-                <TabPanel value={this.state.tabValue} index={0}>
-                  {this.props.unansweredQuestions.map((id) => (
-                    <PoolSneak  key={id} id={id}/>
-                ))}
                 
+                <TabPanel value={this.state.tabValue} index={0}>
+                    
+                {this.props.hasQuestions === true
+                    ? this.props.unansweredQuestions.map((id) => (
+                        <PoolSneak  key={id} id={id}/>
+                    ))
+                    : <div>Sorry, no new questions :(</div>}
+
                 </TabPanel>
                 <TabPanel value={this.state.tabValue} index={1}>
+  
                 {this.props.answeredQuestions.map((id) => (
                     <PoolSneak  key={id} id={id}/>
                 ))}
@@ -68,7 +75,8 @@ function mapStateToProps({questions, authedUser, users}){
     return {
         questionIds: questionIds,
         answeredQuestions: userAnswered,
-        unansweredQuestions: userUnanswered
+        unansweredQuestions: userUnanswered,
+        hasQuestions : userUnanswered.length > 0
     }
 }
 

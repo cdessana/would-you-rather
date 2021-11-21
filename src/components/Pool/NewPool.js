@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
+import { Redirect } from 'react-router';
 import {handleAddQuestion} from '../../actions/questions'
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
@@ -10,7 +11,8 @@ class NewPool extends Component {
     
     state = {
         optionOne: '',
-        optionTwo: ''
+        optionTwo: '',
+        submitted: false
     }
 
     handleChangeOne = (e) => {
@@ -35,12 +37,18 @@ class NewPool extends Component {
         const {dispatch} = this.props
         dispatch(handleAddQuestion(optionOne, optionTwo))
 
+        this.setState(() => ({
+            submitted: true
+        }))
     }
-
 
     render(){
 
-        const { optionOne, optionTwo } = this.state
+        const { optionOne, optionTwo, submitted } = this.state
+          
+        if (submitted === true) {
+            return <Redirect to={`/home`}/>;
+        }
 
         return (
 
