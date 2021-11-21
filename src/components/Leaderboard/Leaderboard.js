@@ -12,10 +12,11 @@ class Leaderboard extends Component {
 
      for (const key in users) {
          const userName = users[key].name
+         const userAavatar = users[key].avatarURL
          const questions = Object.keys(users[key].questions).length
          const answers =  Object.keys(users[key].answers).length
          const points = questions + answers
-         userPoints.push({id: key, points: points, answers: answers, questions: questions, userName: userName})
+         userPoints.push({id: key, points: points, answers: answers, questions: questions, userName: userName, userAavatar: userAavatar})
     }
 
     userPoints.sort(function (a, b) {
@@ -34,7 +35,7 @@ class Leaderboard extends Component {
           <div>
               Leaderboard
               {userPoints.map((o) => (
-                    <UserRank  key={o.id} id={o.id} answers={o.answers} questions ={o.questions} points = {o.points} userName ={o.userName}/>
+                    <UserRank  key={o.id} id={o.id} answers={o.answers} questions ={o.questions} points = {o.points} userName ={o.userName} userAavatar ={o.userAavatar}/>
                 ))}
           </div>
       )

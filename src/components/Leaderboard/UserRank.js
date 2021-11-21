@@ -17,6 +17,7 @@ class UserRank extends Component {
         return(
         <ul>
             <li>
+                <img className ='nav-pic' src={this.props.userAavatar} alt="user-profile" />
                 User: {this.props.userName}
             </li>
             <li>
