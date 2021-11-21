@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import {handleInitialData} from '../actions/shared'
+import  LoadingBar  from 'react-redux-loading'
 import Home from './Home'
-import NewPool from './NewPool'
+import PoolPage from './Pool/PoolPage'
+import NewPool from './Pool/NewPool'
 
 class App extends Component {
 
@@ -13,11 +15,14 @@ class App extends Component {
   render() {
     return (
       <div>
+        <LoadingBar/>
         {this.props.loading === true
         ? <div>
           NULL
         </div>
-        : <Home />}
+        // // : <NewPool/>}
+        : <Home/>}
+        {/* // : <PoolPage match={{params: {id: 'am8ehyc8byjqgar0jgpub9'}}} />} */}
       </div>
     )
   }
@@ -25,7 +30,7 @@ class App extends Component {
 
 function mapStateToProps({authedUser, users, questions}){
   
-    console.log(authedUser);  
+    // console.log(authedUser);  
 
   return {
     loading: authedUser === null,
