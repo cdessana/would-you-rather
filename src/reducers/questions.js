@@ -31,19 +31,16 @@ export default function questions (state = {}, action) {
             console.log(question[answer].votes)
 
             // remove question
-            let a = Object.keys(state).filter(key => key !== questionId).reduce((obj, key) =>
+            let ans = Object.keys(state).filter(key => key !== questionId).reduce((obj, key) =>
             {
                 obj[key] = state[key];
                 return obj;
             }, {});
 
-                console.log('fdfa', a)
+                // console.log('fdfa', ans)
 
-            // // add question with answer
-            a[questionId] = question
+            ans[questionId] = question
 
-                console.log('asffd: ', a)
-            // return state.filter((q) => q.id !== question.id).concat([question]);
             return state
 
         default: 

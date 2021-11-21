@@ -30,6 +30,7 @@ function addQuestion (question) {
       // console.log('info: ', info)
       const {authedUser} = getState()
       dispatch(addAnswer({questionId: info.questionId, authedUser, answer: info.answer}))
+      
 
       return(saveQuestionAnswer({
         authedUser,

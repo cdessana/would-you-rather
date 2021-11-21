@@ -7,6 +7,7 @@ export default function authedUser(state = null, action){
             
             console.log(' SET_AUTHED_USER', action.authedUser)
             return action.authedUser
+            
         default:
             console.log(action.type)
             console.log(state)
