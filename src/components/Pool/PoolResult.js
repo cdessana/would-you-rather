@@ -46,7 +46,7 @@ class PollResult extends Component {
                                 
                                 <LinearProgress className='result-percentage' variant="determinate" value={optionOnePercentual} />
             
-                                <p className='result-detail'>{question.optionOneVotes} out of {totalVotes} votes</p>
+                                <p className='result-detail'>{optionOnePercentual}% {question.optionOneVotes} out of {totalVotes} votes</p>
                             </div>
 
                             <div className='pool-result'>
@@ -59,7 +59,7 @@ class PollResult extends Component {
                                     }
                                     <LinearProgress className='result-percentage' variant="determinate" value={optionTwoPercentual} />
                             
-                                <p className='result-detail'>{question.optionTwoVotes} out of {totalVotes} votes</p>
+                                <p className='result-detail'>{optionTwoPercentual}% {question.optionTwoVotes} out of {totalVotes} votes</p>
                                 
                             </div>
                           </div>
