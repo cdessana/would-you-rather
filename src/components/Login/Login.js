@@ -30,10 +30,11 @@ class Login extends Component {
         e.preventDefault()
 
         const {authorizedUser} = this.state
-        const {dispatch} = this.props
+        const { dispatch, history, location } = this.props;
 
         dispatch(handleSetAuthedUser(authorizedUser))
-
+        const to = location.state ? location.state.from : '/home';
+        history.push(to);
     }
     
     

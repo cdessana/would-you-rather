@@ -26,11 +26,6 @@ class App extends Component {
 
   render() {
 
-            
-    // if (this.props.isAuthorized === true) {
-    //   return <Redirect to={`/home`}/>;
-    // }
-
     return (
       <Fragment>
         <LoadingBar />
@@ -40,7 +35,7 @@ class App extends Component {
             : <div>
               <Nav />
                 <Switch>  
-                  <Route path="/" exact component={Login}   />
+                  <Route path="/" exact component={Login} />
                   <Route path="/login" exact component={Login}  />
                   <ProtectedRoute path="/home" exact component={Home}  isAuthorized={this.props.isAuthorized} />
                   <ProtectedRoute path="/questions/:id" exact component={PoolPage} isAuthorized={this.props.isAuthorized} />  
@@ -57,6 +52,7 @@ class App extends Component {
     )
   }
 }
+
 
 function mapStateToProps({authedUser, users, questions}){
   
