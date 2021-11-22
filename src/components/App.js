@@ -2,7 +2,8 @@ import React, { Component, Fragment } from 'react'
 import {connect} from 'react-redux'
 import { Route, Switch } from 'react-router-dom';
 import {handleInitialData} from '../actions/shared'
-import  LoadingBar  from 'react-redux-loading'
+import LoadingBar  from 'react-redux-loading'
+import { Redirect } from 'react-router';
 import Login from './Login/Login'
 import Home from './Home'
 import PoolPage from './Pool/PoolPage'
@@ -14,41 +15,21 @@ import ProtectedRoute from '../utils/RouteGuard';
 
 class App extends Component {
 
-  
   constructor(props) {
-
     super(props);
   }
 
-  getIsLoggedIn = () => {
-
-    const {authedUser} = this.props.authedUser
-    const loggedIn = authedUser!= null || undefined  ? true : false
-    return loggedIn
-
-  }
 
   componentDidMount(){
     this.props.dispatch(handleInitialData())
   }
 
-  requireLogin = (to, from, next) => {
-
-    if (to.meta.auth) {
-      console.log('inside')
-      if (this.props.isAuthorized) {
-        next()
-      }
-      
-      next.redirect('/login');
-
-    } else {
-      next()
-    }
-  };
-
   render() {
 
+            
+    // if (this.props.isAuthorized === true) {
+    //   return <Redirect to={`/home`}/>;
+    // }
 
     return (
       <Fragment>
@@ -59,13 +40,15 @@ class App extends Component {
             : <div>
               <Nav />
                 <Switch>  
-                <Route path="/" exact component={Login}  />
-                <Route path="/login" exact component={Login}  />
+                  <Route path="/" exact component={Login}   />
+                  <Route path="/login" exact component={Login}  />
                   <ProtectedRoute path="/home" exact component={Home}  isAuthorized={this.props.isAuthorized} />
-                  <ProtectedRoute path="/page-not-found" component={PageNotFound} isAuthorized={this.props.isAuthorized}  />
                   <ProtectedRoute path="/pool/:id" exact component={PoolPage} isAuthorized={this.props.isAuthorized} />  
-                  <ProtectedRoute path='/new' exact component={NewPool}  isAuthorized={this.props.isAuthorized} />
+                  <ProtectedRoute path='/new' component={NewPool}  isAuthorized={this.props.isAuthorized} />
                   <ProtectedRoute path="/leaderboard" exact component={Leaderboard}  isAuthorized={this.props.isAuthorized} />
+                  <Route render={(props) => {
+                    return <PageNotFound {...props} isAuthorized={this.props.isAuthorized} />;
+                  }}/>
                 </Switch>
               </div>}
         </div>
