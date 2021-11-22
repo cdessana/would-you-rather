@@ -53,7 +53,7 @@ class Pool extends Component{
 
         
         if (voted === true) {
-            return <Redirect to={`/pool/${id}`}/>;
+            return <Redirect to={`/questions/${id}`}/>;
         }
   
 

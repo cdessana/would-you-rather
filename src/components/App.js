@@ -43,8 +43,8 @@ class App extends Component {
                   <Route path="/" exact component={Login}   />
                   <Route path="/login" exact component={Login}  />
                   <ProtectedRoute path="/home" exact component={Home}  isAuthorized={this.props.isAuthorized} />
-                  <ProtectedRoute path="/pool/:id" exact component={PoolPage} isAuthorized={this.props.isAuthorized} />  
-                  <ProtectedRoute path='/new' component={NewPool}  isAuthorized={this.props.isAuthorized} />
+                  <ProtectedRoute path="/questions/:id" exact component={PoolPage} isAuthorized={this.props.isAuthorized} />  
+                  <ProtectedRoute path='/add' component={NewPool}  isAuthorized={this.props.isAuthorized} />
                   <ProtectedRoute path="/leaderboard" exact component={Leaderboard}  isAuthorized={this.props.isAuthorized} />
                   <Route render={(props) => {
                     return <PageNotFound {...props} isAuthorized={this.props.isAuthorized} />;

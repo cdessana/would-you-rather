@@ -35,7 +35,7 @@ class PoolSneak extends Component {
 
             </div>
                 <div className='pool-submit'>
-                <Link className='poll-preview-link' to={`/pool/${question.id}`}>
+                <Link className='poll-preview-link' to={`/questions/${question.id}`}>
                   <Button variant='outlined'>View Poll</Button>
                 </Link>
                 </div>

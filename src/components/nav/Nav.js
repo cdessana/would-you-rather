@@ -65,8 +65,8 @@ class Nav extends Component{
               </NavLink>
             </li>
             <li>
-              <NavLink to='/new' activeClassName='active'>
-                New Pool
+              <NavLink to='/add' activeClassName='active'>
+                Add question
               </NavLink>
             </li>
             <li>
