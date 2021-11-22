@@ -11,13 +11,13 @@ class PoolSneak extends Component {
     const {authedUser, question, userQuestion} = this.props; 
     return (
     
-      <Box className='box'>
+      <Box className='pool-box'>
                   
-        <div className="pool-sneak-js-top">
+        <div className="pool-top">
             {userQuestion.name} asks:
         </div>
 
-        <div className="pool-sneak-js-bottom">
+        <div className="pool-box-content">
             
             <div className='profile-box'>
                 <div className='profile-picture'> 
@@ -25,12 +25,20 @@ class PoolSneak extends Component {
                 </div>
             </div>
 
-            <div className="pool-sneak-js-box">   
-                <h3>Would you rather</h3>
+            <div className="pool-options">  
+            <div className='poll-title'>
+               Would you rather
+            </div>
+            
+            <div className='question-name'>
                 ...{question.optionOne.text}...
+
+            </div>
+                <div className='pool-submit'>
                 <Link className='poll-preview-link' to={`/pool/${question.id}`}>
                   <Button variant='outlined'>View Poll</Button>
                 </Link>
+                </div>
             </div>
         </div>
     </Box>

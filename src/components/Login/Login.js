@@ -8,6 +8,7 @@ import FormHelperText from '@mui/material/FormHelperText';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { handleSetAuthedUser } from '../../actions/authedUser';
+import './Login.css'
 
 class Login extends Component {
    
@@ -43,15 +44,20 @@ class Login extends Component {
         
         return(
         
-            <div>
+            <div className="question-card">
+
+                <header className="question-card-title">
+                    <h3>Welcome to would you rather app!</h3>
+                </header>
                 <div>
-                    <FormControl required sx={{ m: 1, minWidth: 120 }}>
+                    <FormControl className='select-login' required sx={{ m: 1, minWidth: 120 }}>
                         <InputLabel id="user-dropdown">User</InputLabel>
                         <Select
+                        
                         labelId="user-dropdown"
                         id="user-dropdown-select-required"
                         value={authorizedUser}
-                        label="Select one *"
+                        label="Select a user *"
                         onChange={this.handleChange}
                         >
                         <MenuItem value="">
@@ -65,8 +71,8 @@ class Login extends Component {
                     </FormControl>
                 </div>
 
-                <div>
-                    <Button onClick={this.handleSubmit} variant='outlined'>Sign in</Button>
+                <div className='select-login'> 
+                    <Button className='login-button' onClick={this.handleSubmit} variant='outlined'>Sign in</Button>
                 </div>
         
             </div>

@@ -31,7 +31,6 @@ class Leaderboard extends Component {
 
       return (
           <div>
-              Leaderboard
               {userPoints.map((o) => (
                     <UserRank  key={o.id} id={o.id} answers={o.answers} questions ={o.questions} points = {o.points} userName ={o.userName} userAavatar ={o.userAavatar}/>
                 ))}

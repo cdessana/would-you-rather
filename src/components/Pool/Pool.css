@@ -1,11 +1,12 @@
 .pool-box{
-    margin: 5%;
+    margin: 2%;
     width: 40%;
-    background-color: #e7f1fa;
-    height: 30vh;
+    background-color: #C2D1FF;
+    height: 40vh;
     border-style: solid;
     border-width: 1px;
     border-color:#b8b8b8;
+    width: 80%;
     /* padding: 10px; */
 }
 

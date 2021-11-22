@@ -5,6 +5,7 @@ import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 import TabPanel from './TabPanel'
 import PoolSneak from "./Pool/PoolSneak";
+import './Home.css'
 
 class Home extends Component {
 
@@ -26,7 +27,7 @@ class Home extends Component {
 
         return (
             <div>
-                <Box sx={{ width: '50%' }}>
+                <Box className = 'home-tab'>
                 <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                     <Tabs
                     value={this.state.tabValue}

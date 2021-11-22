@@ -31,12 +31,14 @@ function Nav (props) {
             Leaderboard
           </NavLink>
         </li>
-        <li>
+        <li className='spaced'>
             Hello, {user.name} 
-            <img className ='nav-pic' src={user.avatarURL} alt="user-profile" />
         </li>
         <li>
-            <p onClick={handleLogout}>Logout</p> 
+          <img className ='nav-pic' src={user.avatarURL} alt="user-profile" />
+        </li>
+        <li onClick={handleLogout}>
+           Logout
         </li>   
       </ul>
     </nav>

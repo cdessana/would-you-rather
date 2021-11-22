@@ -1,4 +1,48 @@
+.box-result{
+
+    margin: 10px 0 10px 0;
+    width: 100%;
+    background-color: #cfe8fc;
+    height: 35vh;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #e3f2fd;
+
+}
+
+.result-title{
+
+    font-size: medium;
+    margin:0%
+}
+
+.result-percentage{
+    width: 40%;
+}
+
+.question-name{
+    font-size: medium;
+    margin:15px 0px
+
+}
+
+.pool-result{
+    width: 100%;
+
+}
 .progress-label {
     padding-right: 10px;
     font-size: 1rem;
+    height: 10%;
+}
+
+.result-detail{
+    margin-top: 0;
+    font-size: small;
+}
+
+.your-vote{
+    color:midnightblue;
+    font-size:medium;
+    font-weight: bold;
 }

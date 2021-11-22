@@ -2,25 +2,26 @@ import { Component } from 'react';
 import { connect } from 'react-redux';
 import Box from '@mui/material/Box';
 import LinearProgress from '@mui/material/LinearProgress';
+import './PoolResult.css'
 
 class PollResult extends Component {
     render() {
     
     const {id, authedUser, question, userVote} = this.props
     const totalVotes = question.optionOneVotes + question.optionTwoVotes
-    const optionOnePercentual = ((question.optionOneVotes / totalVotes)*100).toFixed(2)
-    const optionTwoPercentual = ((question.optionTwoVotes / totalVotes)*100).toFixed(2)
+    const optionOnePercentual = parseFloat(((question.optionOneVotes / totalVotes)*100).toFixed(2))
+    const optionTwoPercentual = parseFloat(((question.optionTwoVotes / totalVotes)*100).toFixed(2))
 
       
     return (
-          <div>
-              <Box className='box'>
+    
+              <Box className='pool-box'>
                   
-                  <div className="pool-sneak-js-top">
+                  <div className="pool-top">
                       Asked by {question.authorName}
                   </div>
           
-                  <div className="pool-sneak-js-bottom">
+                  <div className="pool-box-content">
                       
                       <div className='profile-box'>
                           <div className='profile-picture'> 
@@ -28,28 +29,43 @@ class PollResult extends Component {
                           </div>
                       </div>
           
-                      <div className="pool-sneak-js-box">   
-                          <h3>Results</h3>
-                          <div className='pool-result'>
-                            <h4>Would you rather {question.optionOneText}?</h4>
-                            <Box sx={{ width: '100%' }}>
-                                <LinearProgress variant="determinate" value={optionOnePercentual} />
-                            </Box>
-                            <p>{question.optionOneVotes} out of {totalVotes} votes</p>
-                          </div>
+                      <div className='pool-options'>   
+                        <div className='poll-title'>
+                            Results
+                        </div>
 
-                          <div className='pool-result'>
-                            <h4>Would you rather {question.optionTwoText}?</h4>
-                            <Box sx={{ width: '100%' }}>
-                                <LinearProgress variant="determinate" value={optionTwoPercentual} />
-                            </Box>
-                            <p>{question.optionTwoVotes} out of {totalVotes} votes</p>
+                          <div className='poll-form'>
+                            <div className='pool-result'>
+                                <div className='question-name'>Would you rather {question.optionOneText}?</div>
+
+                                {
+                                    userVote === 'optionOne'
+                                    ? <div className='your-vote'>Your vote!</div>
+                                    : null
+                                }
+                                
+                                <LinearProgress className='result-percentage' variant="determinate" value={optionOnePercentual} />
+            
+                                <p className='result-detail'>{question.optionOneVotes} out of {totalVotes} votes</p>
+                            </div>
+
+                            <div className='pool-result'>
+                                <div className='question-name'>Would you rather {question.optionTwoText}?</div>
                             
+                                    {
+                                        userVote === 'optionTwo'
+                                        ? <div className='your-vote'>Your vote!</div>
+                                        : null
+                                    }
+                                    <LinearProgress className='result-percentage' variant="determinate" value={optionTwoPercentual} />
+                            
+                                <p className='result-detail'>{question.optionTwoVotes} out of {totalVotes} votes</p>
+                                
+                            </div>
                           </div>
                       </div>
                   </div>
               </Box>
-          </div>
       )
     }
 }
