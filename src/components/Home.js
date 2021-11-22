@@ -21,10 +21,6 @@ class Home extends Component {
             }))
         };
 
-        const hasQuestions = this.props.unansweredQuestions.lenght > 0
-
-
-
         return (
             <div>
                 <Box className = 'home-tab'>
@@ -65,19 +61,26 @@ class Home extends Component {
 function mapStateToProps({questions, authedUser, users}){
 
     const questionIds = Object.keys(questions)
-    var userAnswered = Object.keys(users[authedUser].answers);
-    var userUnanswered = questionIds.filter(
-        function(e) {
-          return this.indexOf(e) < 0;
-        },
-        userAnswered
-    );
+    var userAnswered = authedUser === null? null :Object.keys(users[authedUser].answers);
+    let hasQuestions = null
+    
+    if(userAnswered){
+        var userUnanswered = questionIds.filter(
+            function(e) {
+              return this.indexOf(e) < 0;
+            },
+            userAnswered
+        );
+
+        hasQuestions = userUnanswered.length > 0
+    }
+
 
     return {
         questionIds: questionIds,
         answeredQuestions: userAnswered,
         unansweredQuestions: userUnanswered,
-        hasQuestions : userUnanswered.length > 0
+        hasQuestions : hasQuestions 
     }
 }
 
