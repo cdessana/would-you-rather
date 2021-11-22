@@ -38,7 +38,6 @@ class Pool extends Component{
         const {dispatch, id} = this.props
 
         dispatch(handleAddAnswer({questionId: id, answer: selected}))    
-        console.log('handleSubmit: ', this.props)
 
         this.setState(() => ({
             selected: '',

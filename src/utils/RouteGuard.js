@@ -4,7 +4,6 @@ import { Redirect, Route } from "react-router-dom";
 function ProtectedRoute({ component: Component, ...restOfProps }) {
   
     const { isAuthorized } = restOfProps;
-  console.log("this", isAuthorized);
 
   return (
     <Route

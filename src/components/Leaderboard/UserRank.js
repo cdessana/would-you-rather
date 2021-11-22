@@ -4,14 +4,6 @@ import './UserRank.css';
 
 class UserRank extends Component {
     
-
-    constructor(props) {
-        super(props);
-    
-        console.log('props constructor: ', this.props)
-    }
-
-
     render(){
 
         return(
@@ -49,29 +41,7 @@ class UserRank extends Component {
 
             </div>
 
-            </Box>
-        // <ul>
-        //     <li>
-        //         <img className ='nav-pic' src={this.props.userAavatar} alt="user-profile" />
-        //         User: {this.props.userName}
-        //     </li>
-        //     <li>
-
-        //         Score: {this.props.points}
-        //     </li>
-        //     <li>
-
-        //         Answered Questions: {this.props.answers}
-        //     </li>
-        //     <li>
-
-        //         Created Questions: {this.props.questions}
-        //     </li>
-            
-            
-            
-        // </ul>
-       
+            </Box>       
         )
     }
 }

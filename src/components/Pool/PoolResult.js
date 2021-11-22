@@ -75,7 +75,6 @@ function mapStateToProps({ authedUser, users, questions }, props) {
     const optionOne = 'optionOne'
     const optionTwo = 'optionTwo'
 
-    console.log('POOL RESULT - mapStateToProps')
     const id = props.id
 
     const question = questions[id]
