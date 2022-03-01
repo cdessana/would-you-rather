@@ -7,14 +7,10 @@ This is the project of react-redux classes. In this app A user is asked a questi
 
 # Project Structure
 
-├── README.md - # This file.
-
-├── package-lock.json #npm package manager file
-
-├── package.json # npm package manager file.
-
-└── src
-
+    ├── README.md - # This file.
+    ├── package-lock.json #npm package manager file
+    ├── package.json # npm package manager file.
+    └── src
     ├── actions # Actions for react-redux architecture
     │   ├── authedUser.js
     │   ├── questions.js
